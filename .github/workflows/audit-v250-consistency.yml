@@ -49,7 +49,7 @@ jobs:
               show("Sensitivity H10 N=10 same segment", sens,
                    lambda r: r.get("持有期間H")=="10" and r.get("區段口徑")=="僅訊號及進出場同區段" and r.get("選股範圍檔數")=="10", 1)
               show("Strategy NAV path rows H10", path,
-                   lambda r: r.get("持有期間H")=="10", 3)
+                   lambda r: r.get("持有期間H")=="10" and r.get("區段口徑")=="僅同區段" and r.get("成本情境")=="一般股票基準成本" and r.get("交易模式")=="前10檔全部入場", 3)
               show("Sensitivity NAV path H10 N=10", spath,
-                   lambda r: r.get("持有期間H")=="10" and r.get("選股範圍檔數")=="10", 3)
+                   lambda r: r.get("持有期間H")=="10" and r.get("區段口徑")=="僅訊號及進出場同區段" and r.get("選股範圍檔數")=="10", 3)
           PY
