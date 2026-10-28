@@ -1,0 +1,82 @@
+name: Inspect SSO v2.48.1 model results
+on:
+  push:
+    branches:
+      - inspect-v2481-results-20261028
+    paths:
+      - .github/workflows/inspect-v2481-results.yml
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Download and inspect v2.48.1 result ZIP
+        shell: bash
+        run: |
+          python - <<'PY'
+          import csv, io, json, urllib.request, zipfile
+          from collections import Counter
+
+          url = "https://raw.githubusercontent.com/CHLINX/sso/main/SSO_v2.48.1_%E6%A8%A1%E6%9C%AC%E5%A4%96%E6%A0%A1%E6%BA%96%E9%96%80%E6%AA%BB%E8%88%87%E5%85%AC%E5%8F%B8%E5%90%8D%E7%A8%B1%E7%B5%90%E6%9E%9C.zip"
+          request = urllib.request.Request(url, headers={"User-Agent": "SSO-results-inspector"})
+          with urllib.request.urlopen(request, timeout=90) as response:
+              blob = response.read()
+          print("ZIP bytes:", len(blob))
+          with zipfile.ZipFile(io.BytesIO(blob)) as z:
+              names = z.namelist()
+              print("ZIP entries:", len(names))
+              print("FILES:")
+              for name in names:
+                  info = z.getinfo(name)
+                  print(f" - {name} ({info.file_size:,} bytes)")
+
+              def inspect_csv(token, max_show=20):
+                  matches = [n for n in names if token in n and n.lower().endswith(".csv")]
+                  if not matches:
+                      print(f"\n### NOT FOUND: {token}")
+                      return
+                  name = matches[0]
+                  raw = z.read(name)
+                  try:
+                      txt = raw.decode("utf-8-sig")
+                  except UnicodeDecodeError:
+                      txt = raw.decode("cp950", errors="replace")
+                  reader = csv.DictReader(io.StringIO(txt))
+                  shown = []
+                  total = 0
+                  for row in reader:
+                      total += 1
+                      if len(shown) < max_show:
+                          shown.append(row)
+                  print(f"\n### {name} | rows={total:,} | bytes={len(raw):,}")
+                  if shown:
+                      print("COLUMNS:", json.dumps(list(shown[0].keys()), ensure_ascii=False))
+                      for i, row in enumerate(shown, 1):
+                          print(f"ROW {i}:", json.dumps(row, ensure_ascii=False))
+                      if total > len(shown):
+                          print(f"... (showing first {len(shown)} of {total:,} rows)")
+
+              inspect_csv("分類機率能力總結", 20)
+              inspect_csv("預測排序能力總結", 20)
+              inspect_csv("獲利機率校準檢驗總結", 30)
+              inspect_csv("10檔分級前瞻績效比較", 30)
+              inspect_csv("選股範圍敏感度總結", 40)
+              inspect_csv("預測分位組樣本外實際績效", 40)
+              inspect_csv("最新達標獲利候選最多10檔", 15)
+              inspect_csv("最新10檔獲利可能性排行", 12)
+
+              # Find relevant summary statements in the report text, if any.
+              reports = [n for n in names if n.lower().endswith(".txt") and "報告" in n]
+              for name in reports:
+                  text = z.read(name).decode("utf-8-sig", errors="replace")
+                  print(f"\n### REPORT KEY LINES: {name}")
+                  keys = ("AUC", "Auc", "平均淨報酬", "淨報酬", "校準", "達標", "合格候選", "獲利率", "分類器")
+                  selected = [(i, line.strip()) for i, line in enumerate(text.splitlines(), 1)
+                              if any(k in line for k in keys)]
+                  for i, line in selected[:80]:
+                      print(f"L{i}: {line[:500]}")
+                  if len(selected) > 80:
+                      print(f"... truncated {len(selected)-80} matching lines")
+          PY
