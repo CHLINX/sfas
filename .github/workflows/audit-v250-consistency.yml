@@ -1,0 +1,55 @@
+name: Audit SSO v2.50 H10 summary consistency
+on:
+  push:
+    branches:
+      - inspect-v250-results-20261029
+    paths:
+      - .github/workflows/audit-v250-consistency.yml
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Compare H10 strategy summary and sensitivity paths
+        shell: bash
+        run: |
+          python - <<'PY'
+          import csv, io, json, urllib.request, zipfile
+          url = "https://raw.githubusercontent.com/CHLINX/sso/main/SSO_v2.50_%E6%97%A5%E6%88%90%E4%BA%A4%E9%87%8F%E7%89%B9%E5%BE%B5%E8%88%87500%E6%97%A5%E6%AA%A2%E6%9F%A5%E9%BB%9E%E7%B5%90%E6%9E%9C.zip"
+          req = urllib.request.Request(url, headers={"User-Agent": "SSO-results-inspector"})
+          with urllib.request.urlopen(req, timeout=120) as response:
+              data = response.read()
+          with zipfile.ZipFile(io.BytesIO(data)) as z:
+              names = z.namelist()
+              def get_rows(token):
+                  name = next(n for n in names if token in n and n.endswith(".csv"))
+                  raw = z.read(name)
+                  try: txt = raw.decode("utf-8-sig")
+                  except UnicodeDecodeError: txt = raw.decode("cp950", errors="replace")
+                  rows = list(csv.DictReader(io.StringIO(txt)))
+                  print("\n###", name, "rows", len(rows), "bytes", len(raw))
+                  if rows:
+                      print("COLUMNS:", json.dumps(list(rows[0].keys()), ensure_ascii=False))
+                  return rows
+              comp = get_rows("10檔分級前瞻績效比較")
+              sens = get_rows("選股範圍敏感度總結")
+              path = get_rows("10檔組合淨值路徑")
+              spath = get_rows("選股範圍敏感度淨值路徑")
+              def show(label, rows, predicate, last=5):
+                  selected = [r for r in rows if predicate(r)]
+                  print("\n##", label, "matches", len(selected))
+                  for r in selected[:2]:
+                      print("FIRST:", json.dumps(r, ensure_ascii=False))
+                  for r in selected[-last:]:
+                      print("LAST:", json.dumps(r, ensure_ascii=False))
+              show("10-file H10 same segment normal cost all 10", comp,
+                   lambda r: r.get("持有期間H")=="10" and r.get("區段口徑")=="僅同區段" and r.get("成本情境")=="一般股票基準成本" and r.get("交易模式")=="前10檔全部入場", 1)
+              show("Sensitivity H10 N=10 same segment", sens,
+                   lambda r: r.get("持有期間H")=="10" and r.get("區段口徑")=="僅訊號及進出場同區段" and r.get("選股範圍檔數")=="10", 1)
+              show("Strategy NAV path rows H10", path,
+                   lambda r: r.get("持有期間H")=="10", 3)
+              show("Sensitivity NAV path H10 N=10", spath,
+                   lambda r: r.get("持有期間H")=="10" and r.get("選股範圍檔數")=="10", 3)
+          PY
