@@ -61,11 +61,11 @@ jobs:
               inspect_csv("分類機率能力總結", 20)
               inspect_csv("預測排序能力總結", 20)
               inspect_csv("獲利機率校準檢驗總結", 30)
-              inspect_csv("10檔分級前瞻績效比較", 30)
+              inspect_csv("10檔分級前瞻績效比較", 48)
               inspect_csv("選股範圍敏感度總結", 40)
               inspect_csv("預測分位組樣本外實際績效", 40)
               inspect_csv("最新達標獲利候選最多10檔", 15)
-              inspect_csv("最新10檔獲利可能性排行", 12)
+              inspect_csv("最新10檔獲利可能性排行", 40)
 
               # Find relevant summary statements in the report text, if any.
               reports = [n for n in names if n.lower().endswith(".txt") and "報告" in n]
