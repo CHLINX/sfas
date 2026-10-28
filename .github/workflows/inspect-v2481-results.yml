@@ -19,7 +19,7 @@ jobs:
           import csv, io, json, urllib.request, zipfile
           from collections import Counter
 
-          url = "https://raw.githubusercontent.com/CHLINX/sso/main/SSO_v2.48.1_%E6%A8%A1%E6%9C%AC%E5%A4%96%E6%A0%A1%E6%BA%96%E9%96%80%E6%AA%BB%E8%88%87%E5%85%AC%E5%8F%B8%E5%90%8D%E7%A8%B1%E7%B5%90%E6%9E%9C.zip"
+          url = "https://raw.githubusercontent.com/CHLINX/sso/main/SSO_v2.48.1_%E6%A8%A3%E6%9C%AC%E5%A4%96%E6%A0%A1%E6%BA%96%E9%96%80%E6%AA%BB%E8%88%87%E5%85%AC%E5%8F%B8%E5%90%8D%E7%A8%B1%E7%B5%90%E6%9E%9C.zip"
           request = urllib.request.Request(url, headers={"User-Agent": "SSO-results-inspector"})
           with urllib.request.urlopen(request, timeout=90) as response:
               blob = response.read()
