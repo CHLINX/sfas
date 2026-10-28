@@ -1,0 +1,94 @@
+name: Inspect SSO v2.50 model results
+on:
+  push:
+    branches:
+      - inspect-v250-results-20261029
+    paths:
+      - .github/workflows/inspect-v250-results.yml
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Download and inspect v2.50 result ZIP
+        shell: bash
+        run: |
+          python - <<'PY'
+          import csv, io, json, urllib.request, zipfile
+
+          url = "https://raw.githubusercontent.com/CHLINX/sso/main/SSO_v2.50_%E6%97%A5%E6%88%90%E4%BA%A4%E9%87%8F%E7%89%B9%E5%BE%B5%E8%88%87500%E6%97%A5%E6%AA%A2%E6%9F%A5%E9%BB%9E%E7%B5%90%E6%9E%9C.zip"
+          request = urllib.request.Request(url, headers={"User-Agent": "SSO-results-inspector"})
+          with urllib.request.urlopen(request, timeout=120) as response:
+              blob = response.read()
+          print("ZIP bytes:", len(blob))
+          with zipfile.ZipFile(io.BytesIO(blob)) as z:
+              names = z.namelist()
+              print("ZIP entries:", len(names))
+              print("FILES:")
+              for name in names:
+                  info = z.getinfo(name)
+                  print(f" - {name} ({info.file_size:,} bytes)")
+
+              def read_text(name):
+                  raw = z.read(name)
+                  for encoding in ("utf-8-sig", "cp950"):
+                      try:
+                          return raw.decode(encoding)
+                      except UnicodeDecodeError:
+                          pass
+                  return raw.decode("utf-8", errors="replace")
+
+              def inspect_csv(token, max_show=30):
+                  matches = [n for n in names if token in n and n.lower().endswith(".csv")]
+                  if not matches:
+                      print(f"\n### NOT FOUND: {token}")
+                      return
+                  name = matches[0]
+                  txt = read_text(name)
+                  reader = csv.DictReader(io.StringIO(txt))
+                  shown = []
+                  total = 0
+                  for row in reader:
+                      total += 1
+                      if len(shown) < max_show:
+                          shown.append(row)
+                  print(f"\n### {name} | rows={total:,} | bytes={len(z.read(name)):,}")
+                  if shown:
+                      print("COLUMNS:", json.dumps(list(shown[0].keys()), ensure_ascii=False))
+                      for i, row in enumerate(shown, 1):
+                          print(f"ROW {i}:", json.dumps(row, ensure_ascii=False))
+                      if total > len(shown):
+                          print(f"... (showing first {len(shown)} of {total:,} rows)")
+
+              for token, count in [
+                  ("分類機率能力總結", 30),
+                  ("預測排序能力總結", 30),
+                  ("獲利機率校準檢驗總結", 40),
+                  ("10檔分級前瞻績效比較", 60),
+                  ("選股範圍敏感度總結", 80),
+                  ("預測分位組樣本外實際績效", 80),
+                  ("上漲潛力分級實際績效檢驗", 60),
+                  ("最新達標獲利候選最多10檔", 20),
+                  ("最新10檔獲利可能性排行", 20),
+              ]:
+                  inspect_csv(token, count)
+
+              for name in names:
+                  if name.endswith(".json") and "來源品質與執行設定" in name:
+                      print(f"\n### JSON {name}")
+                      print(read_text(name)[:12000])
+
+              reports = [n for n in names if n.lower().endswith(".txt") and "報告" in n]
+              for name in reports:
+                  report = read_text(name)
+                  print(f"\n### REPORT KEY LINES: {name}")
+                  keys = ("AUC", "Auc", "平均淨報酬", "淨報酬", "校準", "達標", "合格候選", "獲利率", "分類器", "最大回撤", "特徵")
+                  selected = [(i, line.strip()) for i, line in enumerate(report.splitlines(), 1)
+                              if any(k in line for k in keys)]
+                  for i, line in selected[:100]:
+                      print(f"L{i}: {line[:500]}")
+                  if len(selected) > 100:
+                      print(f"... truncated {len(selected)-100} matching lines")
+          PY
