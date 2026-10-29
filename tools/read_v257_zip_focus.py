@@ -139,6 +139,27 @@ def main() -> None:
                     "predicted_net_positive", "selected_flag_true", "usable_net_return"
                 )))
 
+            # 同時檢查條件為何全未選中，避免只看旗標總數就下結論。
+            statuses: dict[tuple[str, str], dict[str, int]] = {}
+            for row in rows:
+                key = (fmt(row.get("交易模式")), fmt(row.get("候選狀態")))
+                agg = statuses.setdefault(key, {
+                    "rows": 0, "potential_high": 0, "predicted_net_positive": 0,
+                    "profit_flag_true": 0, "mode_flag_true": 0,
+                })
+                agg["rows"] += 1
+                agg["potential_high"] += int(fmt(row.get("上漲潛力")) == "高")
+                pred = num(row.get("預測淨報酬"))
+                agg["predicted_net_positive"] += int(pred is not None and pred > 0)
+                agg["profit_flag_true"] += int(truth(row.get("符合獲利候選條件")))
+                agg["mode_flag_true"] += int(truth(row.get("達成交易模式條件")))
+            say("\\n===== 候選狀態分布（用來釐清零選中原因） =====")
+            say("交易模式 | 候選狀態 | 列數 | 上漲潛力=高 | 預測淨報酬>0 | 符合獲利候選條件=True | 達成交易模式條件=True")
+            for (mode, status), a in sorted(statuses.items(), key=lambda kv: (kv[0][0], -kv[1]["rows"], kv[0][1])):
+                say(f"{mode} | {status} | " + " | ".join(str(a[k]) for k in (
+                    "rows", "potential_high", "predicted_net_positive", "profit_flag_true", "mode_flag_true"
+                )))
+
         if mismatch_name:
             rows = read_csv(zf, by_suffix[mismatch_name])
             say(f"\n===== 旗標不一致逐筆清單聚合：{len(rows):,} rows =====")
