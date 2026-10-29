@@ -80,18 +80,32 @@ if summary_info:
         costcol = find_col(cols,"成本情境")
         scopecol = find_col(cols,"區段口徑")
         timecol = find_col(cols,"時間切片") or find_col(cols,"時期")
-        hypcol = find_col(cols,"研究假設") or find_col(cols,"情境")
+        log("前 2 列供欄位辨識：")
+        for r in rows[:2]: log(show(r))
         targets = []
         for r in rows:
             h = (r.get(hcol,"") if hcol else "").replace("H","").strip()
             if h not in {"3","5","10"}: continue
             if costcol and "一般" not in r.get(costcol,""): continue
             if scopecol and "僅同區段" not in r.get(scopecol,""): continue
-            if hypcol and ("高潛力" not in r.get(hypcol,"") or ("正預測" not in r.get(hypcol,"") and "大於0" not in r.get(hypcol,""))): continue
             targets.append(r)
-        log(f"主假設／一般成本／僅同區段 H3-H5-H10：{len(targets)} 列")
+        log(f"一般成本／僅同區段 H3-H5-H10：{len(targets)} 列")
+        keys = [
+            timecol,hcol,costcol,scopecol,
+            find_col(cols,"活躍日平均"),find_col(cols,"活躍日中位數"),
+            find_col(cols,"活躍日P5"),find_col(cols,"活躍日勝率"),
+            find_col(cols,"活躍日虧損率"),find_col(cols,"剔除最佳活躍日後平均"),
+            find_col(cols,"剔除最差活躍日後平均"),find_col(cols,"剔除最佳與最差各一日後平均"),
+            find_col(cols,"逐一剔除一日後平均仍為正的比例"),
+            find_col(cols,"最佳一日占所有正報酬日合計"),
+            find_col(cols,"最差一日占所有虧損日絕對值合計"),
+            find_col(cols,"前10名日平均"),
+            find_col(cols,"策略減前10名平均日差_全訊號日"),
+            find_col(cols,"策略活躍日減前10名平均日差_活躍日")
+        ]
+        keys=[k for k in keys if k]
         for r in sorted(targets, key=lambda x: ((x.get(timecol,"") or ""), (x.get(hcol,"") or ""))):
-            log(show(r))
+            log(show(r, keys))
 
 extreme_info = next((x for x in infos if x.filename.endswith("v2.61_極端訊號日明細.csv")), None)
 if extreme_info:
