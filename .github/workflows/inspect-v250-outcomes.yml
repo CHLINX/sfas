@@ -1,0 +1,65 @@
+name: Inspect v2.50 matured H5 outcome fields
+
+on:
+  push:
+    branches:
+      - tmp/inspect-v250-outcomes
+    paths:
+      - ".github/workflows/inspect-v250-outcomes.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Inspect archived baseline result ZIP without writing it back
+        run: |
+          python - <<'PY'
+          import csv, io, urllib.request, zipfile, collections
+          from urllib.parse import quote
+          name = "SSO_v2.50_日成交量特徵與500日檢查點結果.zip"
+          url = "https://raw.githubusercontent.com/CHLINX/sso/main/" + quote(name, safe="")
+          with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent":"v250-outcome-schema-inspector"}), timeout=180) as r:
+              blob=r.read()
+          print("ZIP_BYTES",len(blob))
+          assert len(blob)==21654521
+          with zipfile.ZipFile(io.BytesIO(blob)) as z:
+              csvname=next(n for n in z.namelist() if n.rsplit("/",1)[-1]=="最新全市場候選持續評估_v2.50.csv")
+              raw=z.read(csvname)
+          text=None
+          for enc in ("utf-8-sig","utf-8","cp950","big5"):
+              try: text=raw.decode(enc); break
+              except UnicodeDecodeError: pass
+          rd=csv.DictReader(io.StringIO(text))
+          rows=list(rd)
+          fields=rd.fieldnames or []
+          print("CSV",csvname,"ROWS",len(rows),"FIELDS",len(fields))
+          print("HEADER", "|".join(fields))
+          h5=[]
+          for x in rows:
+              try: h=int(float(x.get("持有期間H") or x.get("H") or "0"))
+              except: continue
+              if h==5:
+                  d=(x.get("訊號日期") or x.get("signal_date") or "").strip()
+                  if d >= "2026-10-01": h5.append(x)
+          dates=sorted(set((x.get("訊號日期") or x.get("signal_date") or "") for x in h5))
+          print("H5_DATES_FROM_OCT",dates)
+          cols=[c for c in [
+              "持有期間H","訊號日期","股票代號","公司名稱","上漲潛力","預測淨報酬",
+              "訊號日收盤價","entry_open","entry_segment","exit_close","exit_segment",
+              "target_idx","entry_exit_valid","gross_return","signal_entry_mismatch",
+              "entry_exit_same_segment","all_segment_same","entry_trade_valid",
+              "training_label_valid","net_return_general","net_return_stress","候選狀態",
+              "符合獲利候選條件","優先獲利候選"
+          ] if c in fields]
+          print("OUTCOME_FIELDS","|".join(cols))
+          for x in sorted(h5,key=lambda r:((r.get("訊號日期") or r.get("signal_date") or ""), (r.get("股票代號") or "")))[-12:]:
+              print("SAMPLE","|".join(str(x.get(c,"")) for c in cols))
+          for c in ["entry_exit_valid","signal_entry_mismatch","entry_exit_same_segment","all_segment_same","entry_trade_valid","training_label_valid","候選狀態"]:
+              if c in fields:
+                  print("COUNTS",c,dict(collections.Counter(str(x.get(c,"")) for x in h5)))
+          PY
