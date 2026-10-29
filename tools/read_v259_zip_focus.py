@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """Read v2.59 public result ZIP through GitHub Actions; never modify main."""
-import csv, io, zipfile, urllib.request
+import csv, io, zipfile, urllib.request, statistics
 from urllib.parse import quote
 from collections import Counter, defaultdict
 from datetime import date
@@ -155,7 +155,7 @@ if detail_info:
                 if not arr and not vals: continue
                 pct = sorted(v*scale for v in vals)
                 mean = sum(pct)/len(pct) if pct else None
-                med = pct[len(pct)//2] if pct else None
+                med = statistics.median(pct) if pct else None
                 win = sum(v>0 for v in vals)/len(vals)*100 if vals else None
                 def f(x): return "NA" if x is None else f"{x:.2f}%"
                 tickers = Counter((r.get(scol) or "NA") for _,r,v in arr) if scol else Counter()
