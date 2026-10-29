@@ -80,15 +80,19 @@ if summary_info:
     log(f"\n情境彙總列數：{len(rows):,}")
     if rows:
         log("情境彙總欄位：" + " | ".join(rows[0].keys()))
-        # Keep just the target counterfactual and period rows.
-        chosen = []
-        for row in rows:
-            vals = " ".join(str(v) for v in row.values())
-            if "高潛力" in vals and ("正預測" in vals or "大於0" in vals or ">0" in vals):
-                chosen.append(row)
-        log(f"符合「高潛力＋正預測」關鍵字的彙總列：{len(chosen)}")
-        for row in chosen[:36]:
-            log(" | ".join(f"{k}={v}" for k,v in row.items()))
+        # Print only the exact target hypothesis at general cost / same-section scope.
+        chosen = [
+            row for row in rows
+            if row.get("情境") == "高潛力且預測淨報酬大於0"
+            and row.get("成本情境") == "一般股票基準成本"
+            and row.get("區段口徑") == "僅同區段"
+        ]
+        log(f"主要研究假設（一般成本／僅同區段）彙總列：{len(chosen)}")
+        for row in chosen:
+            keys = ("時間切片", "持有期間H", "選中筆數", "有效淨報酬筆數", "平均淨報酬",
+                    "淨報酬中位數", "淨勝率", "最差單筆淨報酬", "最佳單筆淨報酬",
+                    "有選中股票的訊號日期數", "候選訊號日期數", "有選股訊號日比例")
+            log(" | ".join(f"{k}={row.get(k, '')}" for k in keys if k in row))
 
 detail_info = next((i for i in infos if i.filename.endswith("v2.59_高潛力正預測逐筆明細.csv")), None)
 if detail_info:
@@ -157,6 +161,18 @@ if detail_info:
                 tickers = Counter((r.get(scol) or "NA") for _,r,v in arr) if scol else Counter()
                 top_ticker = tickers.most_common(1)[0] if tickers else ("NA",0)
                 log(f"{period} H{h}: rows={len(arr)}, valid={len(vals)}, mean={f(mean)}, median={f(med)}, win={f(win)}, best={f(max(pct) if pct else None)}, worst={f(min(pct) if pct else None)}, top_stock={top_ticker[0]}({top_ticker[1]} rows)")
+        # Count unique signal dates and concentration: multiple stocks on one date are not independent time samples.
+        log("\\n===== 訊號日集中度（一般成本／僅同區段） =====")
+        for period in ("早期60%","中期20%","後期20%"):
+            for h in ("1","3","5","10"):
+                arr = [(dt,r,v) for p,hh,dt,r,v in parsed if p == period and hh == h and dt is not None]
+                counts = Counter(dt.isoformat() for dt,_,_ in arr)
+                if not arr:
+                    continue
+                top_days = counts.most_common(5)
+                log(f"{period} H{h}: rows={len(arr)}, unique_signal_dates={len(counts)}, "
+                    f"max_rows_same_date={max(counts.values())}, top_dates={top_days}")
+
         # Inspect target late H3 and H10: small sample/concentration and extremes.
         for h in ("3","10"):
             arr = [(dt,r,v) for period,hh,dt,r,v in parsed if period=="後期20%" and hh==h and v is not None]
