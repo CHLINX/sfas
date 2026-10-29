@@ -1,0 +1,56 @@
+name: Inspect v2.51 actual-outcome table schema
+
+on:
+  push:
+    branches:
+      - tmp/inspect-v250-outcomes
+    paths:
+      - ".github/workflows/inspect-v251-outcomes.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Inspect result archive schemas (read-only)
+        run: |
+          python - <<'PY'
+          import csv, io, urllib.request, zipfile, collections
+          from urllib.parse import quote
+          repo="CHLINX/sso"
+          jobs=[
+            ("SSO_v2.51_個股獨立評估_量能消融與配對比較結果.zip",23606997,"個股評估逐筆資料_多成本情境_v2.51停用量能.csv"),
+            ("SSO_v2.50_日成交量特徵與500日檢查點結果.zip",21654521,"10檔組合逐籃子逐股成交明細_v2.50.csv"),
+          ]
+          for name,size,member_name in jobs:
+            url="https://raw.githubusercontent.com/"+repo+"/main/"+quote(name,safe="")
+            with urllib.request.urlopen(urllib.request.Request(url,headers={"User-Agent":"v251-outcome-inspector"}),timeout=180) as r: blob=r.read()
+            print("\\nARCHIVE",name,"BYTES",len(blob))
+            assert len(blob)==size
+            with zipfile.ZipFile(io.BytesIO(blob)) as z:
+              member=next(n for n in z.namelist() if n.rsplit("/",1)[-1]==member_name)
+              raw=z.read(member)
+            txt=None
+            for enc in ("utf-8-sig","utf-8","cp950","big5"):
+              try: txt=raw.decode(enc); break
+              except UnicodeDecodeError: pass
+            rd=csv.DictReader(io.StringIO(txt)); rows=list(rd); fields=rd.fieldnames or []
+            print("MEMBER",member,"ROWS",len(rows),"FIELDS",len(fields))
+            print("HEADER","|".join(fields))
+            h5=[]
+            for row in rows:
+              try: h=int(float(row.get("持有期間H",row.get("H","0")) or "0"))
+              except: continue
+              if h==5 and (row.get("訊號日期") or row.get("signal_date") or "") >= "2026-10-01": h5.append(row)
+            print("H5_RECENT_ROWS",len(h5),"DATES",sorted(set((r.get("訊號日期") or r.get("signal_date") or "") for r in h5))[:30])
+            useful=[x for x in fields if any(k.lower() in x.lower() for k in ["signal","訊號日期","持有期間","股票代號","symbol","ticker","entry","exit","return","報酬","成本","segment","區段","valid","有效","成交","交易狀態","狀態","預測淨報酬","上漲潛力","close","price","價格"])]
+            print("OUTCOME_RELATED_FIELDS","|".join(useful))
+            for row in h5[:3]:
+              print("SAMPLE","|".join(f"{k}={row.get(k,'')}" for k in useful[:40]))
+            for c in [x for x in ["成本情境","交易模式","區段口徑","entry_exit_valid","entry_exit_same_segment","all_segment_same","entry_trade_valid","training_label_valid","交易狀態","納入報酬","實際淨報酬","net_return_general","signal_date","訊號日期","持有期間H"] if x in fields]:
+              print("COUNTS",c,dict(collections.Counter(str(x.get(c,"")) for x in h5)))
+          PY
