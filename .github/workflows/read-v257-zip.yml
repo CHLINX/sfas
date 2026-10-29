@@ -1,5 +1,5 @@
 # GitHub ZIP 讀取標準流程：
-# 1) 先核對 repository、ref、完整檔名與檔案大小。
+# 1) 先核對 repository、分支、完整檔名與大小。
 # 2) 公開 ZIP 二進位無法直接讀取時，不要求使用者重傳。
 # 3) 只在獨立暫存分支執行此 workflow，絕不修改 main。
 # 4) Python 從 GitHub 下載、核對大小、解壓讀取 TXT/CSV。
@@ -13,6 +13,7 @@ on:
     paths:
       - ".github/workflows/read-v257-zip.yml"
       - "tools/github_zip_read_standard.py"
+      - "tools/read_v257_zip_focus.py"
   workflow_dispatch:
 
 permissions:
@@ -37,8 +38,4 @@ jobs:
         env:
           PYTHONUNBUFFERED: "1"
         run: >
-          python tools/github_zip_read_standard.py
-          --repo CHLINX/sso
-          --ref main
-          --path "SSO_v2.57_條件式交易模式回溯核驗結果_20261029_062605.zip"
-          --expected-size 12721426
+          python tools/read_v257_zip_focus.py
