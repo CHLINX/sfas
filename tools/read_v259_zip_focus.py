@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 """Read v2.59 public result ZIP through GitHub Actions; never modify main."""
 import csv, io, zipfile, urllib.request
+from urllib.parse import quote
 from collections import Counter, defaultdict
 from datetime import date
 
@@ -9,7 +10,7 @@ REPO = "CHLINX/sso"
 REF = "main"
 PATH = "SSO_v2.59_時間切分穩定性診斷結果_20261029_080204.zip"
 EXPECTED_SIZE = 225716
-URL = f"https://raw.githubusercontent.com/{REPO}/{REF}/{PATH}"
+URL = "https://raw.githubusercontent.com/" + REPO + "/" + quote(REF, safe="") + "/" + quote(PATH, safe="")
 
 def log(s=""):
     print(s, flush=True)
