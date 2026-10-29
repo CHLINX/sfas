@@ -1,0 +1,32 @@
+name: Read public v2.61 ZIP via Python
+
+# Temporary read-only workflow; do not run on main.
+on:
+  push:
+    branches:
+      - tmp/read-v261-zip
+    paths:
+      - ".github/workflows/read-v261-zip.yml"
+      - "tools/read_v261_zip_focus.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  read-zip:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout temporary branch
+        uses: actions/checkout@v4
+        with:
+          ref: tmp/read-v261-zip
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Download, verify, and inspect v2.61 ZIP
+        env:
+          PYTHONUNBUFFERED: "1"
+        run: python tools/read_v261_zip_focus.py
