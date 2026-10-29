@@ -1,0 +1,32 @@
+name: Read public v2.59 ZIP via Python
+
+# Temporary read-only workflow; runs only on tmp/read-v259-zip.
+on:
+  push:
+    branches:
+      - tmp/read-v259-zip
+    paths:
+      - ".github/workflows/read-v259-zip.yml"
+      - "tools/read_v259_zip_focus.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  read-zip:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout temporary branch
+        uses: actions/checkout@v4
+        with:
+          ref: tmp/read-v259-zip
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Download, verify, and inspect ZIP
+        env:
+          PYTHONUNBUFFERED: "1"
+        run: python tools/read_v259_zip_focus.py
