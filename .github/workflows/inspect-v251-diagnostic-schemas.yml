@@ -21,28 +21,21 @@ jobs:
           targets = (
             "個股評估逐筆資料_多成本情境_v2.51停用量能.csv",
             "樣本外機率區間門檻診斷_v2.51停用量能.csv",
+            "最新全市場候選持續評估_v2.51停用量能.csv",
+            "最新10檔獲利可能性排行_v2.51停用量能.csv",
             "預測分位組樣本外實際績效_v2.51停用量能.csv",
             "獲利機率校準檢驗總結_v2.51停用量能.csv",
-            "上漲潛力分級個股績效檢驗_v2.51停用量能.csv",
-            "選股範圍敏感度總結_v2.51停用量能.csv",
-            "v2.50_vs_v2.51_最新達標候選數.csv",
-            "v2.50_vs_v2.51_每日候選名單重疊摘要.csv",
-            "v2.50_vs_v2.51停用量能_分類摘要比較.csv",
           )
           for i in z.infolist():
             base = i.filename.rsplit("/",1)[-1]
             if base not in targets: continue
             print("\n###", i.filename, "bytes", i.file_size)
             with z.open(i.filename) as f:
-              sample = f.read(12000)
-            decoded = None
-            for enc in ("utf-8-sig","utf-8","cp950"):
-              try: decoded=sample.decode(enc); break
-              except UnicodeDecodeError: pass
-            if decoded is None:
-              print("DECODE ERROR"); continue
-            reader=csv.reader(io.StringIO(decoded))
-            for j,row in enumerate(reader):
-              print("ROW",j,json.dumps(row,ensure_ascii=False))
-              if j>=2: break
+              header = f.readline()
+              data1 = f.readline()
+              data2 = f.readline()
+            for j,raw in enumerate([header,data1,data2]):
+              try: line=raw.decode("utf-8-sig")
+              except UnicodeDecodeError: line=raw.decode("cp950",errors="replace")
+              print("ROW",j,line.rstrip("\r\n")[:2500])
           PY
