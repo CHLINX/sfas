@@ -1,0 +1,48 @@
+name: Inspect v2.51 diagnostic schemas
+on:
+  push:
+    branches:
+      - inspect-v251-full-zip-20261029
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download and inspect diagnostic schemas
+        run: |
+          python - <<'PY'
+          import csv, io, json, urllib.request, zipfile
+          url = "https://raw.githubusercontent.com/CHLINX/sso/main/SSO_v2.51_%E5%80%8B%E8%82%A1%E7%8D%A8%E7%AB%8B%E8%A9%95%E4%BC%B0_%E9%87%8F%E8%83%BD%E6%B6%88%E8%9E%8D%E8%88%87%E9%85%8D%E5%B0%8D%E6%AF%94%E8%BC%83%E7%B5%90%E6%9E%9C.zip"
+          data = urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent":"SSO-diagnostic-schema"}), timeout=90).read()
+          z = zipfile.ZipFile(io.BytesIO(data))
+          targets = (
+            "個股評估逐筆資料_多成本情境_v2.51停用量能.csv",
+            "樣本外機率區間門檻診斷_v2.51停用量能.csv",
+            "預測分位組樣本外實際績效_v2.51停用量能.csv",
+            "獲利機率校準檢驗總結_v2.51停用量能.csv",
+            "上漲潛力分級個股績效檢驗_v2.51停用量能.csv",
+            "選股範圍敏感度總結_v2.51停用量能.csv",
+            "v2.50_vs_v2.51_最新達標候選數.csv",
+            "v2.50_vs_v2.51_每日候選名單重疊摘要.csv",
+            "v2.50_vs_v2.51停用量能_分類摘要比較.csv",
+          )
+          for i in z.infolist():
+            base = i.filename.rsplit("/",1)[-1]
+            if base not in targets: continue
+            print("\n###", i.filename, "bytes", i.file_size)
+            with z.open(i.filename) as f:
+              sample = f.read(12000)
+            decoded = None
+            for enc in ("utf-8-sig","utf-8","cp950"):
+              try: decoded=sample.decode(enc); break
+              except UnicodeDecodeError: pass
+            if decoded is None:
+              print("DECODE ERROR"); continue
+            reader=csv.reader(io.StringIO(decoded))
+            for j,row in enumerate(reader):
+              print("ROW",j,json.dumps(row,ensure_ascii=False))
+              if j>=2: break
+          PY
