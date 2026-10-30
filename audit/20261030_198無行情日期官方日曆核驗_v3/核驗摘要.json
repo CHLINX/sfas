@@ -1,0 +1,45 @@
+{
+  "版本": "SSO 198 無行情日期 TWSE／TPEx 雙市場官方日曆核驗修正版3",
+  "執行時間": "2026-10-30T08:20:01+00:00",
+  "來源": {
+    "來源CSV": "/content/drive/MyDrive/看股最速適/分析重跑_v1.2_20261026_155023/SFAS_官方API精準補查_20261030_022911/官方行情補查結果.csv",
+    "來源原始列數": 198,
+    "日期市場列數": 198,
+    "唯一日期數": 198,
+    "市場值": [
+      "TWSE"
+    ],
+    "起日": "2016-01-01",
+    "迄日": "2026-10-26",
+    "日期欄": "日期",
+    "市場欄": "市場",
+    "狀態欄": "補查狀態"
+  },
+  "逐項判定分布": {
+    "TPEX_CROSS_SUPPORTS_CLOSURE_TWSE_DIRECT_EVIDENCE_PENDING": 119,
+    "TWSE_HISTORICAL_CALENDAR_UNAVAILABLE_NEEDS_REVIEW": 56,
+    "TWSE_SPECIAL_CLOSURE_CONFIRMED": 4,
+    "TWSE_DIRECT_OFFICIAL_CLOSED": 17,
+    "NOT_LISTED_TWSE_ANNUAL_SCHEDULE_SPECIAL_NOTICE_REVIEW": 2
+  },
+  "日期層級判定分布": {
+    "CROSS_EXCHANGE_CLOSURE_SUPPORT_ONLY": 119,
+    "NO_DIRECT_CLOSURE_EVIDENCE_NEEDS_REVIEW": 58,
+    "ALL_TARGET_MARKETS_DIRECT_OFFICIAL_CLOSED": 21
+  },
+  "TPEx年度日曆成功": 11,
+  "TPEx年度日曆總數": 11,
+  "TWSE年度日曆成功": 1,
+  "TWSE年度日曆總數": 11,
+  "TWSE公告候選數": 12,
+  "TWSE特殊公告日期數": 5,
+  "目標市場列數": 198,
+  "唯一日期數": 198,
+  "輸出資料夾": "/content/SSO_198無行情日期_TWSE_TPEx雙市場官方日曆核驗_修正版3",
+  "限制": [
+    "TPEx 官方日曆只直接核驗 TPEx 目標列；用於 TWSE 目標列時只作跨市場佐證，不冒稱 TWSE 直接證據。",
+    "TWSE E-Shop 文章無歷史附件或附件未能解析時，仍標記待查。",
+    "沒有被年度日曆列出的日期，不會自動視為開市或休市；仍需檢查特殊公告。",
+    "本工具不修改、合併、刪除或搬移任何 Drive 資料。"
+  ]
+}
