@@ -1,0 +1,192 @@
+{
+  "版本": "v4.8",
+  "Repository": "CHLINX/sso",
+  "Branch": "main",
+  "GitHub資料夾": "audit/20261031_023157_看股最速適_底稿來源追查_v4_8",
+  "GitHub資料夾網址": "https://github.com/CHLINX/sso/tree/main/audit/20261031_023157_%E7%9C%8B%E8%82%A1%E6%9C%80%E9%80%9F%E9%81%A9_%E5%BA%95%E7%A8%BF%E4%BE%86%E6%BA%90%E8%BF%BD%E6%9F%A5_v4_8",
+  "上傳成功數": 20,
+  "上傳失敗數": 0,
+  "已驗證檔案": [
+    {
+      "local_path": "/content/看股最速適_底稿來源追查_v4_8_20261031_023157/v2_8主表欄位摘要.json",
+      "remote_path": "audit/20261031_023157_看股最速適_底稿來源追查_v4_8/v2_8主表欄位摘要.json",
+      "size_bytes": 661,
+      "sha": "054d4b2ce62a27c29d50ec76580e358393697dba",
+      "commit_sha": "f0d557beb7627248856f1041783afe8f2cfe11a5",
+      "url": "https://github.com/CHLINX/sso/blob/main/audit/20261031_023157_%E7%9C%8B%E8%82%A1%E6%9C%80%E9%80%9F%E9%81%A9_%E5%BA%95%E7%A8%BF%E4%BE%86%E6%BA%90%E8%BF%BD%E6%9F%A5_v4_8/v2_8%E4%B8%BB%E8%A1%A8%E6%AC%84%E4%BD%8D%E6%91%98%E8%A6%81.json",
+      "verified": true
+    },
+    {
+      "local_path": "/content/看股最速適_底稿來源追查_v4_8_20261031_023157/上游CSV表頭讀取錯誤.csv",
+      "remote_path": "audit/20261031_023157_看股最速適_底稿來源追查_v4_8/上游CSV表頭讀取錯誤.csv",
+      "size_bytes": 4,
+      "sha": "e02abfc9b0e17c18f0c365f044cc760d3b961f4a",
+      "commit_sha": "f82af657f86fffb2c5d86e465eab1b880c451d66",
+      "url": "https://github.com/CHLINX/sso/blob/main/audit/20261031_023157_%E7%9C%8B%E8%82%A1%E6%9C%80%E9%80%9F%E9%81%A9_%E5%BA%95%E7%A8%BF%E4%BE%86%E6%BA%90%E8%BF%BD%E6%9F%A5_v4_8/%E4%B8%8A%E6%B8%B8CSV%E8%A1%A8%E9%A0%AD%E8%AE%80%E5%8F%96%E9%8C%AF%E8%AA%A4.csv",
+      "verified": true
+    },
+    {
+      "local_path": "/content/看股最速適_底稿來源追查_v4_8_20261031_023157/Python與Notebook來源清單.csv",
+      "remote_path": "audit/20261031_023157_看股最速適_底稿來源追查_v4_8/Python與Notebook來源清單.csv",
+      "size_bytes": 4,
+      "sha": "e02abfc9b0e17c18f0c365f044cc760d3b961f4a",
+      "commit_sha": "cccc91888249749959db57afbd224c3d80d372ef",
+      "url": "https://github.com/CHLINX/sso/blob/main/audit/20261031_023157_%E7%9C%8B%E8%82%A1%E6%9C%80%E9%80%9F%E9%81%A9_%E5%BA%95%E7%A8%BF%E4%BE%86%E6%BA%90%E8%BF%BD%E6%9F%A5_v4_8/Python%E8%88%87Notebook%E4%BE%86%E6%BA%90%E6%B8%85%E5%96%AE.csv",
+      "verified": true
+    },
+    {
+      "local_path": "/content/看股最速適_底稿來源追查_v4_8_20261031_023157/程式碼代號及行情處理片段.csv",
+      "remote_path": "audit/20261031_023157_看股最速適_底稿來源追查_v4_8/程式碼代號及行情處理片段.csv",
+      "size_bytes": 802456,
+      "sha": "5582b89cb3acd95744a668124681f9e0801e6ca8",
+      "commit_sha": "adfb956321b5bc810e8b7f939dde325797116d11",
+      "url": "https://github.com/CHLINX/sso/blob/main/audit/20261031_023157_%E7%9C%8B%E8%82%A1%E6%9C%80%E9%80%9F%E9%81%A9_%E5%BA%95%E7%A8%BF%E4%BE%86%E6%BA%90%E8%BF%BD%E6%9F%A5_v4_8/%E7%A8%8B%E5%BC%8F%E7%A2%BC%E4%BB%A3%E8%99%9F%E5%8F%8A%E8%A1%8C%E6%83%85%E8%99%95%E7%90%86%E7%89%87%E6%AE%B5.csv",
+      "verified": true
+    },
+    {
+      "local_path": "/content/看股最速適_底稿來源追查_v4_8_20261031_023157/v2_8主表候選清單.csv",
+      "remote_path": "audit/20261031_023157_看股最速適_底稿來源追查_v4_8/v2_8主表候選清單.csv",
+      "size_bytes": 212,
+      "sha": "3b7a464478133e9faabed1f4189015f75525d5e7",
+      "commit_sha": "215b973ed94163a8810a89370ad84031c17f9159",
+      "url": "https://github.com/CHLINX/sso/blob/main/audit/20261031_023157_%E7%9C%8B%E8%82%A1%E6%9C%80%E9%80%9F%E9%81%A9_%E5%BA%95%E7%A8%BF%E4%BE%86%E6%BA%90%E8%BF%BD%E6%9F%A5_v4_8/v2_8%E4%B8%BB%E8%A1%A8%E5%80%99%E9%81%B8%E6%B8%85%E5%96%AE.csv",
+      "verified": true
+    },
+    {
+      "local_path": "/content/看股最速適_底稿來源追查_v4_8_20261031_023157/診斷摘要.json",
+      "remote_path": "audit/20261031_023157_看股最速適_底稿來源追查_v4_8/診斷摘要.json",
+      "size_bytes": 1059,
+      "sha": "354a6496f0ddca52b2ad9ad700d72e7ebd61f8f3",
+      "commit_sha": "41607f757691878027eb467dfd34891642bec8d0",
+      "url": "https://github.com/CHLINX/sso/blob/main/audit/20261031_023157_%E7%9C%8B%E8%82%A1%E6%9C%80%E9%80%9F%E9%81%A9_%E5%BA%95%E7%A8%BF%E4%BE%86%E6%BA%90%E8%BF%BD%E6%9F%A5_v4_8/%E8%A8%BA%E6%96%B7%E6%91%98%E8%A6%81.json",
+      "verified": true
+    },
+    {
+      "local_path": "/content/看股最速適_底稿來源追查_v4_8_20261031_023157/執行摘要.txt",
+      "remote_path": "audit/20261031_023157_看股最速適_底稿來源追查_v4_8/執行摘要.txt",
+      "size_bytes": 1119,
+      "sha": "a7e30ca1b786ca2af9ad9629cbed00e97b25d0dd",
+      "commit_sha": "cfd333021588b50693fe10e4a090ee7b29172201",
+      "url": "https://github.com/CHLINX/sso/blob/main/audit/20261031_023157_%E7%9C%8B%E8%82%A1%E6%9C%80%E9%80%9F%E9%81%A9_%E5%BA%95%E7%A8%BF%E4%BE%86%E6%BA%90%E8%BF%BD%E6%9F%A5_v4_8/%E5%9F%B7%E8%A1%8C%E6%91%98%E8%A6%81.txt",
+      "verified": true
+    },
+    {
+      "local_path": "/content/看股最速適_底稿來源追查_v4_8_20261031_023157/上游CSV欄位盤點.csv",
+      "remote_path": "audit/20261031_023157_看股最速適_底稿來源追查_v4_8/上游CSV欄位盤點.csv",
+      "size_bytes": 19874,
+      "sha": "45c5cb553d32d42b3ec500ffc79750100c29889c",
+      "commit_sha": "7e0302b310218794229387a96e2c0fd106facc34",
+      "url": "https://github.com/CHLINX/sso/blob/main/audit/20261031_023157_%E7%9C%8B%E8%82%A1%E6%9C%80%E9%80%9F%E9%81%A9_%E5%BA%95%E7%A8%BF%E4%BE%86%E6%BA%90%E8%BF%BD%E6%9F%A5_v4_8/%E4%B8%8A%E6%B8%B8CSV%E6%AC%84%E4%BD%8D%E7%9B%A4%E9%BB%9E.csv",
+      "verified": true
+    },
+    {
+      "local_path": "/content/看股最速適_底稿來源追查_v4_8_20261031_023157/v2_8資料夾直接檔案清單.csv",
+      "remote_path": "audit/20261031_023157_看股最速適_底稿來源追查_v4_8/v2_8資料夾直接檔案清單.csv",
+      "size_bytes": 517,
+      "sha": "f1c05a73d95af70047f07d78a30e55ab2ceea3d8",
+      "commit_sha": "d49855adb267a6f98db496bab6e20e83f2ed7492",
+      "url": "https://github.com/CHLINX/sso/blob/main/audit/20261031_023157_%E7%9C%8B%E8%82%A1%E6%9C%80%E9%80%9F%E9%81%A9_%E5%BA%95%E7%A8%BF%E4%BE%86%E6%BA%90%E8%BF%BD%E6%9F%A5_v4_8/v2_8%E8%B3%87%E6%96%99%E5%A4%BE%E7%9B%B4%E6%8E%A5%E6%AA%94%E6%A1%88%E6%B8%85%E5%96%AE.csv",
+      "verified": true
+    },
+    {
+      "local_path": "/content/看股最速適_底稿來源追查_v4_8_20261031_023157/ZIP封存程式盤點.csv",
+      "remote_path": "audit/20261031_023157_看股最速適_底稿來源追查_v4_8/ZIP封存程式盤點.csv",
+      "size_bytes": 1905,
+      "sha": "d5dd4fd334cf09f65757a458e29640de94595403",
+      "commit_sha": "f33f0700d62ab1dcd59c286eb76526729ab39a10",
+      "url": "https://github.com/CHLINX/sso/blob/main/audit/20261031_023157_%E7%9C%8B%E8%82%A1%E6%9C%80%E9%80%9F%E9%81%A9_%E5%BA%95%E7%A8%BF%E4%BE%86%E6%BA%90%E8%BF%BD%E6%9F%A5_v4_8/ZIP%E5%B0%81%E5%AD%98%E7%A8%8B%E5%BC%8F%E7%9B%A4%E9%BB%9E.csv",
+      "verified": true
+    },
+    {
+      "local_path": "/content/看股最速適_v2_8底稿生成來源追查_v4_7_20261030_182251/v2_8主表欄位摘要.json",
+      "remote_path": "audit/20261031_023157_看股最速適_底稿來源追查_v4_8/v4_7_舊報告_v2_8主表欄位摘要.json",
+      "size_bytes": 697,
+      "sha": "37f299479202cba704ac9087744d992517712c7a",
+      "commit_sha": "db47f3d051e244b221d9863f19ffae2bc5296ea2",
+      "url": "https://github.com/CHLINX/sso/blob/main/audit/20261031_023157_%E7%9C%8B%E8%82%A1%E6%9C%80%E9%80%9F%E9%81%A9_%E5%BA%95%E7%A8%BF%E4%BE%86%E6%BA%90%E8%BF%BD%E6%9F%A5_v4_8/v4_7_%E8%88%8A%E5%A0%B1%E5%91%8A_v2_8%E4%B8%BB%E8%A1%A8%E6%AC%84%E4%BD%8D%E6%91%98%E8%A6%81.json",
+      "verified": true
+    },
+    {
+      "local_path": "/content/看股最速適_v2_8底稿生成來源追查_v4_7_20261030_182251/上游CSV讀取錯誤.csv",
+      "remote_path": "audit/20261031_023157_看股最速適_底稿來源追查_v4_8/v4_7_舊報告_上游CSV讀取錯誤.csv",
+      "size_bytes": 4,
+      "sha": "e02abfc9b0e17c18f0c365f044cc760d3b961f4a",
+      "commit_sha": "46261bcee7e9a6ad10ca297a1fd0fde3073cdcd2",
+      "url": "https://github.com/CHLINX/sso/blob/main/audit/20261031_023157_%E7%9C%8B%E8%82%A1%E6%9C%80%E9%80%9F%E9%81%A9_%E5%BA%95%E7%A8%BF%E4%BE%86%E6%BA%90%E8%BF%BD%E6%9F%A5_v4_8/v4_7_%E8%88%8A%E5%A0%B1%E5%91%8A_%E4%B8%8A%E6%B8%B8CSV%E8%AE%80%E5%8F%96%E9%8C%AF%E8%AA%A4.csv",
+      "verified": true
+    },
+    {
+      "local_path": "/content/看股最速適_v2_8底稿生成來源追查_v4_7_20261030_182251/原始行情及API相關檔案清單.csv",
+      "remote_path": "audit/20261031_023157_看股最速適_底稿來源追查_v4_8/v4_7_舊報告_原始行情及API相關檔案清單.csv",
+      "size_bytes": 702736,
+      "sha": "a2789ababd2bf69c7467d164fa04899bb0d9c679",
+      "commit_sha": "dca79a894f57958eab76429129e7217313f0ac26",
+      "url": "https://github.com/CHLINX/sso/blob/main/audit/20261031_023157_%E7%9C%8B%E8%82%A1%E6%9C%80%E9%80%9F%E9%81%A9_%E5%BA%95%E7%A8%BF%E4%BE%86%E6%BA%90%E8%BF%BD%E6%9F%A5_v4_8/v4_7_%E8%88%8A%E5%A0%B1%E5%91%8A_%E5%8E%9F%E5%A7%8B%E8%A1%8C%E6%83%85%E5%8F%8AAPI%E7%9B%B8%E9%97%9C%E6%AA%94%E6%A1%88%E6%B8%85%E5%96%AE.csv",
+      "verified": true
+    },
+    {
+      "local_path": "/content/看股最速適_v2_8底稿生成來源追查_v4_7_20261030_182251/v2_8及上游檔案完整清單.csv",
+      "remote_path": "audit/20261031_023157_看股最速適_底稿來源追查_v4_8/v4_7_舊報告_v2_8及上游檔案完整清單.csv",
+      "size_bytes": 1588332,
+      "sha": "370d25ad2c3f30fe64458a432a305c121cc698d1",
+      "commit_sha": "69c19245e2b0131621e0e95b31ffc41ee03fa836",
+      "url": "https://github.com/CHLINX/sso/blob/main/audit/20261031_023157_%E7%9C%8B%E8%82%A1%E6%9C%80%E9%80%9F%E9%81%A9_%E5%BA%95%E7%A8%BF%E4%BE%86%E6%BA%90%E8%BF%BD%E6%9F%A5_v4_8/v4_7_%E8%88%8A%E5%A0%B1%E5%91%8A_v2_8%E5%8F%8A%E4%B8%8A%E6%B8%B8%E6%AA%94%E6%A1%88%E5%AE%8C%E6%95%B4%E6%B8%85%E5%96%AE.csv",
+      "verified": true
+    },
+    {
+      "local_path": "/content/看股最速適_v2_8底稿生成來源追查_v4_7_20261030_182251/上游小型CSV欄位盤點.csv",
+      "remote_path": "audit/20261031_023157_看股最速適_底稿來源追查_v4_8/v4_7_舊報告_上游小型CSV欄位盤點.csv",
+      "size_bytes": 12672,
+      "sha": "e3b02bf02dba20f0cfbf990060119fc82d79b2c3",
+      "commit_sha": "d088801139256039ad49ea2508aaf8e6e5185015",
+      "url": "https://github.com/CHLINX/sso/blob/main/audit/20261031_023157_%E7%9C%8B%E8%82%A1%E6%9C%80%E9%80%9F%E9%81%A9_%E5%BA%95%E7%A8%BF%E4%BE%86%E6%BA%90%E8%BF%BD%E6%9F%A5_v4_8/v4_7_%E8%88%8A%E5%A0%B1%E5%91%8A_%E4%B8%8A%E6%B8%B8%E5%B0%8F%E5%9E%8BCSV%E6%AC%84%E4%BD%8D%E7%9B%A4%E9%BB%9E.csv",
+      "verified": true
+    },
+    {
+      "local_path": "/content/看股最速適_v2_8底稿生成來源追查_v4_7_20261030_182251/診斷摘要.json",
+      "remote_path": "audit/20261031_023157_看股最速適_底稿來源追查_v4_8/v4_7_舊報告_診斷摘要.json",
+      "size_bytes": 924,
+      "sha": "517a600816bc0c1b6de22e16bd9d7ffaaba58f59",
+      "commit_sha": "00d67068cc75fe9d56f7678b91d682810fc1196d",
+      "url": "https://github.com/CHLINX/sso/blob/main/audit/20261031_023157_%E7%9C%8B%E8%82%A1%E6%9C%80%E9%80%9F%E9%81%A9_%E5%BA%95%E7%A8%BF%E4%BE%86%E6%BA%90%E8%BF%BD%E6%9F%A5_v4_8/v4_7_%E8%88%8A%E5%A0%B1%E5%91%8A_%E8%A8%BA%E6%96%B7%E6%91%98%E8%A6%81.json",
+      "verified": true
+    },
+    {
+      "local_path": "/content/看股最速適_v2_8底稿生成來源追查_v4_7_20261030_182251/程式碼代號處理片段.csv",
+      "remote_path": "audit/20261031_023157_看股最速適_底稿來源追查_v4_8/v4_7_舊報告_程式碼代號處理片段.csv",
+      "size_bytes": 4,
+      "sha": "e02abfc9b0e17c18f0c365f044cc760d3b961f4a",
+      "commit_sha": "f51df51a9c157458e39c5fbf40da2887d19168b8",
+      "url": "https://github.com/CHLINX/sso/blob/main/audit/20261031_023157_%E7%9C%8B%E8%82%A1%E6%9C%80%E9%80%9F%E9%81%A9_%E5%BA%95%E7%A8%BF%E4%BE%86%E6%BA%90%E8%BF%BD%E6%9F%A5_v4_8/v4_7_%E8%88%8A%E5%A0%B1%E5%91%8A_%E7%A8%8B%E5%BC%8F%E7%A2%BC%E4%BB%A3%E8%99%9F%E8%99%95%E7%90%86%E7%89%87%E6%AE%B5.csv",
+      "verified": true
+    },
+    {
+      "local_path": "/content/看股最速適_v2_8底稿生成來源追查_v4_7_20261030_182251/執行摘要.txt",
+      "remote_path": "audit/20261031_023157_看股最速適_底稿來源追查_v4_8/v4_7_舊報告_執行摘要.txt",
+      "size_bytes": 1117,
+      "sha": "189b0cc064bcdcd6d14ea9553f752b395d63c683",
+      "commit_sha": "aa55dc52f46e0dee316eda86226d72a2425c2e9e",
+      "url": "https://github.com/CHLINX/sso/blob/main/audit/20261031_023157_%E7%9C%8B%E8%82%A1%E6%9C%80%E9%80%9F%E9%81%A9_%E5%BA%95%E7%A8%BF%E4%BE%86%E6%BA%90%E8%BF%BD%E6%9F%A5_v4_8/v4_7_%E8%88%8A%E5%A0%B1%E5%91%8A_%E5%9F%B7%E8%A1%8C%E6%91%98%E8%A6%81.txt",
+      "verified": true
+    },
+    {
+      "local_path": "/content/看股最速適_v2_8底稿生成來源追查_v4_7_20261030_182251/重要上游及行情相關檔案.csv",
+      "remote_path": "audit/20261031_023157_看股最速適_底稿來源追查_v4_8/v4_7_舊報告_重要上游及行情相關檔案.csv",
+      "size_bytes": 9530,
+      "sha": "3baa168f1dd7fcc02043056702843055a9afa2c7",
+      "commit_sha": "19cda5110259136e53637e98cd9a493abe5a25ba",
+      "url": "https://github.com/CHLINX/sso/blob/main/audit/20261031_023157_%E7%9C%8B%E8%82%A1%E6%9C%80%E9%80%9F%E9%81%A9_%E5%BA%95%E7%A8%BF%E4%BE%86%E6%BA%90%E8%BF%BD%E6%9F%A5_v4_8/v4_7_%E8%88%8A%E5%A0%B1%E5%91%8A_%E9%87%8D%E8%A6%81%E4%B8%8A%E6%B8%B8%E5%8F%8A%E8%A1%8C%E6%83%85%E7%9B%B8%E9%97%9C%E6%AA%94%E6%A1%88.csv",
+      "verified": true
+    },
+    {
+      "local_path": "/content/看股最速適_v2_8底稿生成來源追查_v4_7_20261030_182251/重要目錄直接內容.csv",
+      "remote_path": "audit/20261031_023157_看股最速適_底稿來源追查_v4_8/v4_7_舊報告_重要目錄直接內容.csv",
+      "size_bytes": 3816,
+      "sha": "b1379839e86b0da753de6ec8a0aba28724983b90",
+      "commit_sha": "589c30e9405d29ce5fa0b760430e7262eb88a318",
+      "url": "https://github.com/CHLINX/sso/blob/main/audit/20261031_023157_%E7%9C%8B%E8%82%A1%E6%9C%80%E9%80%9F%E9%81%A9_%E5%BA%95%E7%A8%BF%E4%BE%86%E6%BA%90%E8%BF%BD%E6%9F%A5_v4_8/v4_7_%E8%88%8A%E5%A0%B1%E5%91%8A_%E9%87%8D%E8%A6%81%E7%9B%AE%E9%8C%84%E7%9B%B4%E6%8E%A5%E5%85%A7%E5%AE%B9.csv",
+      "verified": true
+    }
+  ],
+  "失敗檔案": []
+}
