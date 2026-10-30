@@ -1,0 +1,52 @@
+==============================================================================
+看股最速適｜198 個無行情日期 TWSE／TPEx 雙市場官方日曆核驗修正版 3
+==============================================================================
+日期來源：/content/drive/MyDrive/看股最速適/分析重跑_v1.2_20261026_155023/SFAS_官方API精準補查_20261030_022911/官方行情補查結果.csv
+目標市場列=198；唯一日期=198；期間=2016-01-01 至 2026-10-26
+TPEx年度日曆：11/11
+TWSE年度日曆：1/11
+TWSE公告候選=12；特殊公告日期=5
+
+TPEx年度取得狀態：
+  2016：OK；事件=22；https://www.tpex.org.tw/storage/en-us/web/bulletin/trading_date/trading_date_105.htm
+  2017：OK；事件=21；https://www.tpex.org.tw/storage/en-us/web/bulletin/trading_date/trading_date_106.htm
+  2018：OK；事件=20；https://www.tpex.org.tw/storage/en-us/web/bulletin/trading_date/trading_date_107.htm
+  2019：OK；事件=17；https://www.tpex.org.tw/storage/en-us/web/bulletin/trading_date/trading_date_108.htm
+  2020：OK；事件=22；https://www.tpex.org.tw/storage/en-us/web/bulletin/trading_date/trading_date_109.htm
+  2021：OK；事件=23；https://www.tpex.org.tw/storage/en-us/web/bulletin/trading_date/trading_date_110.htm
+  2022：OK；事件=21；https://www.tpex.org.tw/storage/en-us/web/bulletin/trading_date/trading_date_111.htm
+  2023：OK；事件=24；https://www.tpex.org.tw/storage/en-us/web/bulletin/trading_date/trading_date_112.htm
+  2024：OK；事件=17；https://www.tpex.org.tw/storage/en-us/web/bulletin/trading_date/trading_date_113.htm
+  2025：OK；事件=19；https://www.tpex.org.tw/storage/en-us/web/bulletin/trading_date/trading_date_114.htm
+  2026：OK；事件=20；https://www.tpex.org.tw/storage/en-us/web/bulletin/trading_date/trading_date_115.htm
+
+TWSE年度取得狀態：
+  2016：NOT_FOUND；事件=0；
+  2017：NOT_FOUND；事件=0；
+  2018：NOT_FOUND；事件=0；
+  2019：NOT_FOUND；事件=0；
+  2020：NOT_FOUND；事件=0；
+  2021：NOT_FOUND；事件=0；
+  2022：NOT_FOUND；事件=0；
+  2023：NOT_FOUND；事件=0；
+  2024：NOT_FOUND；事件=0；
+  2025：NOT_FOUND；事件=0；
+  2026：OK；事件=27；https://www.twse.com.tw/holidaySchedule/holidaySchedule?response=json
+
+逐項判定分布：
+  TPEX_CROSS_SUPPORTS_CLOSURE_TWSE_DIRECT_EVIDENCE_PENDING: 119
+  TWSE_HISTORICAL_CALENDAR_UNAVAILABLE_NEEDS_REVIEW: 56
+  TWSE_SPECIAL_CLOSURE_CONFIRMED: 4
+  TWSE_DIRECT_OFFICIAL_CLOSED: 17
+  NOT_LISTED_TWSE_ANNUAL_SCHEDULE_SPECIAL_NOTICE_REVIEW: 2
+
+日期層級判定分布：
+  CROSS_EXCHANGE_CLOSURE_SUPPORT_ONLY: 119
+  NO_DIRECT_CLOSURE_EVIDENCE_NEEDS_REVIEW: 58
+  ALL_TARGET_MARKETS_DIRECT_OFFICIAL_CLOSED: 21
+
+逐項 CSV：/content/SSO_198無行情日期_TWSE_TPEx雙市場官方日曆核驗_修正版3/198項逐項官方市場日曆核驗.csv
+日期層級 CSV：/content/SSO_198無行情日期_TWSE_TPEx雙市場官方日曆核驗_修正版3/198日期層級交叉核驗.csv
+TWSE 公告候選 CSV：/content/SSO_198無行情日期_TWSE_TPEx雙市場官方日曆核驗_修正版3/TWSE_DataEshop公告候選.csv
+JSON 摘要：/content/SSO_198無行情日期_TWSE_TPEx雙市場官方日曆核驗_修正版3/核驗摘要.json
+只讀；未修改、合併、刪除或搬移 Drive。
