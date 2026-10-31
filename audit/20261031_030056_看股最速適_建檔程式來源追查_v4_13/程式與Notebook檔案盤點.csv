@@ -1,0 +1,33 @@
+﻿檔案,副檔名,大小,類型,Notebook Cell數,程式碼Cell數,高關聯Cell數,高關聯關鍵詞,轉換關鍵詞,評分
+/content/drive/MyDrive/Colab Notebooks/看股最速適.ipynb,.ipynb,2194654,code,55,51,31,MI_INDEX;TWSE_RWD_JSON;data9;rwd/zh/afterTrading;官方API快取;官方來源逐日查詢紀錄;官方原始回應檔;官方行情總表;成交股數;股票代號;股票池官方市場對照;證券代號;證券名稱,\.astype\s*\(;\.replace\s*\(;\.split\s*\(;\.str\.extract;\.str\.slice;\.zfill\s*\(;\b(?:ticker|stock_code|stockcode)\b;\bint\s*\(;\bnormalize\w*\s*\(;astype;int(;isdigit;map(;normalize;re.search;re.sub;re\.search\s*\(;re\.sub\s*\(;replace(;split(;stockcode;str.extract;str.slice;ticker;to_numeric;to_numeric\s*\(;zfill,1395
+/content/drive/MyDrive/Colab Notebooks/巡田最速適.ipynb,.ipynb,4036892,code,38,15,0,,\.astype\s*\(;\.isdigit\s*\(;\.replace\s*\(;\.split\s*\(;\.zfill\s*\(;\bint\s*\(;\bnormalize\w*\s*\(;astype;int(;isdigit;map(;normalize;re.search;re.sub;re\.search\s*\(;re\.sub\s*\(;replace(;split(;to_numeric;to_numeric\s*\(;zfill,344
+/content/drive/MyDrive/看股最速適/SSO_v2.56_實際淨報酬與分層核算_20261029_055725/SSO_v2.56_實際淨報酬與分層核算報告.txt,.txt,3219,text,0,0,1,股票代號,\b(?:ticker|stock_code|stockcode)\b;ticker,7
+/content/drive/MyDrive/看股最速適/SSO_v2.55_逐筆績效與統計口徑稽核_20261029_045750/SSO_v2.55_逐筆績效與統計口徑稽核報告.txt,.txt,2936,text,0,0,1,股票代號,\b(?:ticker|stock_code|stockcode)\b;ticker,7
+/content/drive/MyDrive/看股最速適/緊急備份/睡前備份_20261028_181527/摘要報表/SSO_v2.51停用量能_樣本外校準門檻與公司名稱報告.txt,.txt,140946,text,0,0,0,股票代號,,3
+/content/drive/MyDrive/看股最速適/分析重跑_v1.2_20261026_155023/SFAS_官方市場行情資料底稿_v2.8_十年重建_20261029_205318/執行紀錄.txt,.txt,21106,text,0,0,0,官方行情總表,,3
+/content/drive/MyDrive/看股最速適/SSO_v2.53_排序與統計口徑稽核_20261029_033422/v2.53_目標資料表前5列.txt,.txt,18470,text,0,0,0,股票代號,,3
+/content/drive/MyDrive/看股最速適/SSO_v2.57_條件式交易模式回溯核驗_20261029_061311/SSO_v2.57_條件式交易模式回溯核驗報告.txt,.txt,12218,text,0,0,0,股票代號,,3
+/content/drive/MyDrive/看股最速適/SSO_v2.57_條件式交易模式回溯核驗_20261029_061851/SSO_v2.57_條件式交易模式回溯核驗報告.txt,.txt,12218,text,0,0,0,股票代號,,3
+/content/drive/MyDrive/看股最速適/SSO_v2.57_條件式交易模式回溯核驗_20261029_062309/SSO_v2.57_條件式交易模式回溯核驗報告.txt,.txt,12218,text,0,0,0,股票代號,,3
+/content/drive/MyDrive/看股最速適/SSO_v2.57_條件式交易模式回溯核驗_20261029_062605/SSO_v2.57_條件式交易模式回溯核驗報告.txt,.txt,12218,text,0,0,0,股票代號,,3
+/content/drive/MyDrive/看股最速適/SSO_v2.58_候選排除門檻拆解_20261029_074916/SSO_v2.58_候選排除門檻拆解報告.txt,.txt,10568,text,0,0,0,股票代號,,3
+/content/drive/MyDrive/看股最速適/分析重跑_v1.2_20261026_155023/SFAS_官方API精準補查_20261030_022911/補查執行紀錄.txt,.txt,3565,text,0,0,0,官方行情總表,,3
+/content/drive/MyDrive/看股最速適/分析重跑_v1.2_20261026_155023/SFAS_官方市場行情資料底稿_v2.8_20261029_193103/執行紀錄.txt,.txt,114643,text,0,0,0,,,0
+/content/drive/MyDrive/看股最速適/緊急備份/睡前備份_20261028_181527/摘要報表/SSO_v2.50_vs_v2.51_個股獨立評估與量能消融比較報告.txt,.txt,25182,text,0,0,0,,,0
+/content/drive/MyDrive/看股最速適/SSO_v2.54_排名分數與分位方向稽核_20261029_040349/SSO_v2.54_排名分數與分位方向稽核報告.txt,.txt,14021,text,0,0,0,,,0
+/content/drive/MyDrive/看股最速適/v2.52_決策診斷_20261029_012814/SSO_v2.52_決策診斷報告.txt,.txt,13659,text,0,0,0,,,0
+/content/drive/MyDrive/看股最速適/SSO_v2.59_時間切分穩定性診斷_20261029_080138/SSO_v2.59_時間切分穩定性診斷報告.txt,.txt,11740,text,0,0,0,,,0
+/content/drive/MyDrive/看股最速適/SSO_v2.60_訊號日層級穩定性診斷_20261029_081836/SSO_v2.60_訊號日層級穩定性診斷報告.txt,.txt,9623,text,0,0,0,,,0
+/content/drive/MyDrive/看股最速適/SSO_v2.53_排序與統計口徑稽核_20261029_033422/SSO_v2.53_排序與統計口徑稽核報告.txt,.txt,8763,text,0,0,0,,,0
+/content/drive/MyDrive/看股最速適/SSO_v2.61_訊號日極端日穩健性診斷_20261029_084331/SSO_v2.61_訊號日極端日穩健性診斷報告.txt,.txt,7727,text,0,0,0,,,0
+/content/drive/MyDrive/看股最速適/SSO_v2.62_前瞻影子驗證規格封存_20261029_165713/SSO_v2.62_前瞻影子驗證規格封存報告.txt,.txt,4340,text,0,0,0,,,0
+/content/drive/MyDrive/看股最速適/前瞻影子驗證/SSO_FROZEN_v2.62_20261029_165713/規格封存/SSO_v2.62_前瞻影子驗證規格封存報告.txt,.txt,4340,text,0,0,0,,,0
+/content/drive/MyDrive/看股最速適/緊急備份/SSO結果備份_20261028_171832/摘要報表/SSO_v2.50_日成交量特徵與500日檢查點/SSO_v2.50_核心分析修正說明.txt,.txt,2106,text,0,0,0,,,0
+/content/drive/MyDrive/看股最速適/緊急備份/睡前備份_20261028_181527/摘要報表/SSO_v2.50_核心分析修正說明.txt,.txt,2106,text,0,0,0,,,0
+/content/drive/MyDrive/看股最速適/緊急備份/睡前備份_20261028_181527/摘要報表/SSO_v2.51停用量能_核心分析修正說明.txt,.txt,1541,text,0,0,0,,,0
+/content/drive/MyDrive/看股最速適/緊急備份/SSO結果備份_20261028_171832/摘要報表/SSO_v2.51_量能消融_停用量能特徵/SSO_v2.51停用量能_核心分析修正說明.txt,.txt,1397,text,0,0,0,,,0
+/content/drive/MyDrive/看股最速適/SSO_v2.62_前瞻影子驗證規格封存_20261029_165713/v2.62_前瞻驗證規則說明.txt,.txt,1086,text,0,0,0,,,0
+/content/drive/MyDrive/看股最速適/前瞻影子驗證/SSO_FROZEN_v2.62_20261029_165713/規格封存/v2.62_前瞻驗證規則說明.txt,.txt,1086,text,0,0,0,,,0
+/content/drive/MyDrive/看股最速適/緊急備份/睡前備份_20261028_181527/備份清單.txt,.txt,1083,text,0,0,0,,,0
+/content/drive/MyDrive/看股最速適/緊急備份/SSO結果備份_20261028_171832/備份清單.txt,.txt,1035,text,0,0,0,,,0
+/content/drive/MyDrive/看股最速適/分析重跑_v1.2_20261026_155023/SFAS_官方市場行情資料底稿_v2.8_十年重建_20261029_205318/資料源與品質說明.md,.md,472,text,0,0,0,,,0
