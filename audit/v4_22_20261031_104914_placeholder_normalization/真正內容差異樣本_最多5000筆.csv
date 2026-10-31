@@ -1,0 +1,4 @@
+﻿trade_date,market_norm,legacy_code,identity_row_no,old_full_code,new_full_code,old_name,new_name,old_open,new_open,old_high,new_high,old_low,new_low,old_close,new_close,old_volume,new_volume,old_market_raw,new_market_raw
+2024-08-22,TWSE,2887,1,2887,2887Z1,台新新光金,台新新光己特,,,,,,,,,0,0,TWSE,上市
+2026-02-02,TWSE,6592,1,6592,6592B,和潤企業甲特,和潤企業乙特,,,,,,,,,0,0,TWSE,上市
+2026-02-02,TWSE,6592,2,6592,6592A,和潤企業,和潤企業甲特,60.6,,60.7,,59.6,,60.1,,1165211,0,TWSE,上市
