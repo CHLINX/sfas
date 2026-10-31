@@ -1,0 +1,7 @@
+﻿檔案,是否存在,大小,關聯關鍵詞
+資料源與品質說明.md,True,472,
+執行紀錄.txt,True,21106,官方行情總表
+執行摘要.json,True,3578,官方行情總表;官方API快取
+官方API資料表欄位.csv,True,2573187,MI_INDEX;rwd/zh/afterTrading;證券代號;證券名稱;成交股數
+官方來源逐日查詢紀錄.csv,True,2690272,TWSE_RWD_JSON;MI_INDEX;rwd/zh/afterTrading;官方API快取
+股票池官方市場對照.csv,True,70706,股票代號
